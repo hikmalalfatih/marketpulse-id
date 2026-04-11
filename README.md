@@ -9,10 +9,49 @@
 [![Go](https://img.shields.io/badge/Go-1.24-00ADD8?style=flat-square&logo=go&logoColor=white)](https://golang.org)
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black)](https://reactjs.org)
 [![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
+[![Recharts](https://img.shields.io/badge/Recharts-2.12-22b5bf?style=flat-square)](https://recharts.org)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
-[![GitHub](https://img.shields.io/badge/GitHub-Codeby--Javier-181717?style=flat-square&logo=github)](https://github.com/Codeby-Javier)
 
-![MarketPulse ID Preview](https://raw.githubusercontent.com/Codeby-Javier/marketpulse-id/main/preview.png)
+---
+
+## 🎬 Demo — Klik untuk Nonton
+
+<a href="https://youtu.be/Dy38Ezprne4" target="_blank">
+  <img src="https://img.youtube.com/vi/Dy38Ezprne4/maxresdefault.jpg" alt="MarketPulse ID Demo Video" width="100%"/>
+</a>
+
+▶️ **[Tonton Demo Lengkap di YouTube →](https://youtu.be/Dy38Ezprne4)**
+
+</div>
+
+---
+
+## 📸 Tampilan Aplikasi
+
+<div align="center">
+
+<img src="image/Screenshot 2026-04-11 133154.png" alt="Ringkasan Pasar" width="100%"/>
+<br/><sub>📊 Halaman Ringkasan — Snapshot semua aset dalam satu tampilan</sub>
+
+<br/><br/>
+
+<img src="image/Screenshot 2026-04-11 133205.png" alt="Kripto Dashboard" width="100%"/>
+<br/><sub>🪙 Halaman Kripto — Top 20 aset dengan sparkline 7 hari</sub>
+
+<br/><br/>
+
+<img src="image/Screenshot 2026-04-11 133221.png" alt="Saham IDX" width="100%"/>
+<br/><sub>🇮🇩 Saham IDX — 15 blue chip BEI dengan harga IDR real-time</sub>
+
+<br/><br/>
+
+<img src="image/Screenshot 2026-04-11 133229.png" alt="Grafik Historis" width="100%"/>
+<br/><sub>📉 Grafik Historis 90 Hari — Klik baris mana saja untuk membuka chart interaktif</sub>
+
+<br/><br/>
+
+<img src="image/Screenshot 2026-04-11 133241.png" alt="Kurs Valas & Komoditas" width="100%"/>
+<br/><sub>💱 Kurs Valas & Komoditas — Emas, minyak, dan 9 pasangan mata uang</sub>
 
 </div>
 
@@ -178,14 +217,6 @@ go run .
 
 Backend akan berjalan di `http://localhost:8080`
 
-```
-┌─────────────────────────────────────┐
-│  MarketPulse ID Backend v1.0        │
-│  Listening on :8080                 │
-│  Ready to serve financial data      │
-└─────────────────────────────────────┘
-```
-
 ### 3. Jalankan Frontend
 
 Buka terminal baru:
@@ -260,6 +291,7 @@ Terinspirasi dari tampilan terminal trading profesional — tidak ada gradien be
 
 ```
 marketpulse-id/
+├── image/               # Screenshot tampilan aplikasi
 ├── market-api/          # Go backend
 │   ├── main.go
 │   ├── go.mod
