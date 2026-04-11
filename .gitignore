@@ -1,0 +1,19 @@
+# Go
+market-api/bin/
+market-api/*.exe
+
+# Node
+market-frontend/node_modules/
+market-frontend/dist/
+
+# Env
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/settings.json
+*.swp

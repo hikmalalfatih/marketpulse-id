@@ -1,0 +1,57 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  font-size: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.market-status {
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--border-accent);
+}
+
+.market-open {
+  background: rgba(14, 203, 129, 0.1);
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.market-closed {
+  background: rgba(246, 70, 93, 0.1);
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.clock {
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 16px;
+    font-size: 13px;
+  }
+  
+  .logo {
+    font-size: 15px;
+  }
+}
+

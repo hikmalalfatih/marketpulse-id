@@ -1,0 +1,89 @@
+:root {
+  --bg-primary: #0b0f14;
+  --bg-card: #141920;
+  --bg-card-hover: #1a2029;
+  --bg-header: #0d1117;
+  --border: #21282f;
+  --border-accent: #2d3748;
+  --text-primary: #e8edf2;
+  --text-secondary: #8b95a1;
+  --text-muted: #525e6b;
+  --green: #0ecb81;
+  --green-bg: rgba(14, 203, 129, 0.1);
+  --red: #f6465d;
+  --red-bg: rgba(246, 70, 93, 0.1);
+  --gold: #f0b90b;
+  --gold-bg: rgba(240, 185, 11, 0.1);
+  --blue: #3b82f6;
+  --accent: #1890ff;
+  --font-mono: 'Courier New', Consolas, monospace;
+  --radius: 6px;
+  --radius-sm: 4px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { font-size: 14px; height: 100%; }
+
+body {
+  height: 100%;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+#root { height: 100%; }
+
+table { border-collapse: collapse; width: 100%; }
+
+th {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border);
+  padding: 9px 14px;
+  text-align: right;
+}
+
+th:first-child, th:nth-child(2) { text-align: left; }
+
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+  text-align: right;
+}
+
+td:first-child, td:nth-child(2) { text-align: left; }
+
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.positive { color: var(--green); }
+.negative { color: var(--red); }
+.muted    { color: var(--text-muted); }
+
+button { font-family: inherit; }
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #141920 25%, #1e2630 50%, #141920 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
