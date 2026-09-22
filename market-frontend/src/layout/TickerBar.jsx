@@ -36,7 +36,7 @@ function TickerBar({ crypto = [], forex = {} }) {
     return (
       <div className="ticker-bar">
         <div className="ticker-content-static">
-          <span className="tick-sym">MarketPulse ID</span>
+          <span className="tick-sym">maley exchange</span>
           <span className="tick-price">Memuat data pasar...</span>
         </div>
       </div>

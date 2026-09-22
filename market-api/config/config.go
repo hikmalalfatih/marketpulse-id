@@ -3,14 +3,15 @@ package config
 import (
 	"log"
 	"os"
+	"strings"
 )
 
 type Config struct {
-	Port          string
-	HTTPTimeout   int
-	IDXTickers    []string
-	USTickers     []string
-	OilSymbols    []string
+	Port        string
+	HTTPTimeout int
+	IDXTickers  []string
+	USTickers   []string
+	OilSymbols  []string
 }
 
 var defaultConfig = &Config{
@@ -32,19 +33,20 @@ func LoadConfig() *Config {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = defaultConfig.Port
+	} else if !strings.HasPrefix(port, ":") {
+		port = ":" + port
 	}
-	
+
 	cfg := &Config{
-		Port:          port,
-		HTTPTimeout:   defaultConfig.HTTPTimeout,
-		IDXTickers:    defaultConfig.IDXTickers,
-		USTickers:     defaultConfig.USTickers,
-		OilSymbols:    defaultConfig.OilSymbols,
+		Port:        port,
+		HTTPTimeout: defaultConfig.HTTPTimeout,
+		IDXTickers:  defaultConfig.IDXTickers,
+		USTickers:   defaultConfig.USTickers,
+		OilSymbols:  defaultConfig.OilSymbols,
 	}
-	
-	log.Printf("Config loaded: Port=%s, IDX=%d tickers, US=%d tickers", 
+
+	log.Printf("Config loaded: Port=%s, IDX=%d tickers, US=%d tickers",
 		cfg.Port, len(cfg.IDXTickers), len(cfg.USTickers))
-	
+
 	return cfg
 }
-

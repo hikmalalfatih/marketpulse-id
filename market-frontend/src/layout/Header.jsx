@@ -37,9 +37,9 @@ function Header() {
 
   return (
     <header className="header">
-      <div className="logo">
-        ◈ MarketPulse ID
-      </div>
+      <a className="logo" href='http://maley.vercel.app'>
+        ◈ about dev
+      </a>
       <div className={`market-status ${statusClass}`}>
         🟢 Pasar {marketStatus}
       </div>

@@ -2,20 +2,26 @@ package scraper
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
-	"strconv"
 	"time"
 
 	"market-api/models"
 )
 
-const goldURL = "https://data-asg.goldprice.org/dbXRates/USD"
+const (
+	goldURL   = "https://query1.finance.yahoo.com/v8/finance/chart/GC=F?range=1d&interval=1d"
+	silverURL = "https://query1.finance.yahoo.com/v8/finance/chart/SI=F?range=1d&interval=1d"
+)
 
-type goldResponse struct {
-	Items []struct {
-		XauPrice string `json:"xauPrice"`
-		XagPrice string `json:"xagPrice"`
-	} `json:"items"`
+type yahooChartResponse struct {
+	Chart struct {
+		Result []struct {
+			Meta struct {
+				RegularMarketPrice float64 `json:"regularMarketPrice"`
+			} `json:"meta"`
+		} `json:"result"`
+	} `json:"chart"`
 }
 
 const (
@@ -24,28 +30,17 @@ const (
 )
 
 func FetchGold() (models.GoldData, string, bool) {
-	data, err := DoRequest(goldURL, map[string]string{
-		"Origin":  "https://goldprice.org",
-		"Referer": "https://goldprice.org/",
-	})
+	goldOz, err := fetchYahooMarketPrice(goldURL)
 	if err != nil {
 		log.Printf("[GOLD] Fetch error: %v", err)
 		return fallbackGold(), "fallback", true
 	}
 
-	var resp goldResponse
-	if err := json.Unmarshal(data, &resp); err != nil {
-		log.Printf("[GOLD] JSON parse error: %v", err)
+	silverOz, err := fetchYahooMarketPrice(silverURL)
+	if err != nil {
+		log.Printf("[GOLD] Silver fetch error: %v", err)
 		return fallbackGold(), "fallback", true
 	}
-
-	if len(resp.Items) == 0 {
-		return fallbackGold(), "fallback", true
-	}
-
-	item := resp.Items[0]
-	goldOz, _ := strconv.ParseFloat(item.XauPrice, 64)
-	silverOz, _ := strconv.ParseFloat(item.XagPrice, 64)
 
 	gold := models.GoldData{
 		PriceUSDPerOz:    goldOz,
@@ -58,7 +53,24 @@ func FetchGold() (models.GoldData, string, bool) {
 		UpdatedAt:        time.Now().Format(time.RFC3339),
 	}
 
-	return gold, "goldprice.org", false
+	return gold, "yahoo-finance", false
+}
+
+func fetchYahooMarketPrice(url string) (float64, error) {
+	data, err := DoRequest(url, nil)
+	if err != nil {
+		return 0, err
+	}
+
+	var response yahooChartResponse
+	if err := json.Unmarshal(data, &response); err != nil {
+		return 0, err
+	}
+	if len(response.Chart.Result) == 0 || response.Chart.Result[0].Meta.RegularMarketPrice <= 0 {
+		return 0, fmt.Errorf("market price missing from response")
+	}
+
+	return response.Chart.Result[0].Meta.RegularMarketPrice, nil
 }
 
 func fallbackGold() models.GoldData {
@@ -72,4 +84,3 @@ func fallbackGold() models.GoldData {
 		UpdatedAt:        time.Now().Format(time.RFC3339),
 	}
 }
-

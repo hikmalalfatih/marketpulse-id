@@ -5,7 +5,7 @@ function Sidebar({ items, active, onSelect }) {
     <aside className="sidebar">
       <div className="sidebar-logo">
         <span className="sidebar-logo-icon">◈</span>
-        <span className="sidebar-logo-text">MarketPulse</span>
+        <span className="sidebar-logo-text">maley exchange</span>
       </div>
       <nav className="sidebar-nav">
         {items.map((item) => (

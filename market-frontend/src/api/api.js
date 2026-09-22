@@ -1,4 +1,5 @@
-const BASE = '/api'
+const apiOrigin = import.meta.env.VITE_API_ORIGIN?.replace(/\/$/, '') || ''
+const BASE = `${apiOrigin}/api`
 
 async function get(path) {
   try {
