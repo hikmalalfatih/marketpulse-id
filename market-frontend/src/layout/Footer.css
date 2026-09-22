@@ -20,11 +20,6 @@
   gap: 8px;
 }
 
-.footer-sep {
-  color: var(--text-muted);
-  font-size: 11px;
-}
-
 .footer-link {
   display: inline-flex;
   align-items: center;
